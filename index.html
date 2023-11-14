@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lincoln Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #bdf2ff; /* Blue */
+        }
+
+        .button {
+            font-size: 18px;
+            padding: 15px;
+            cursor: pointer;
+            user-select: none;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        #clicker {
+            background-color: #3498db; /* Teal Blue */
+        }
+
+        #score {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #autoClickers {
+            margin-top: 20px;
+        }
+
+        .clickerButton {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        #woodClicker {
+            background-color: #8B4513; /* Brown */
+        }
+
+        #stoneClicker {
+            background-color: #A9A9A9; /* Dark Gray */
+        }
+
+        #bronzeClicker {
+            background-color: #CD7F32; /* Bronze */
+        }
+
+        #goldClicker {
+            background-color: #FFD700; /* Gold */
+        }
+
+        #sapphireClicker {
+            background-color: #1E90FF; /* Dodger Blue */
+        }
+
+        #rubyClicker {
+            background-color: #E0115F; /* Ruby Red */
+        }
+
+        #emeraldClicker {
+            background-color: #50C878; /* Emerald Green */
+        }
+
+        #topazClicker {
+            background-color: #FFD700; /* Topaz Yellow */
+        }
+
+        #lincolnClicker {
+            background-color: #800000; /* Lincoln Red */
+        }
+
+        #crystalClicker {
+            background-color: #87CEEB; /* Crystal Blue */
+        }
+
+        #amethystClicker {
+            background-color: #9966CC; /* Amethyst Purple */
+        }
+
+        #turlStreetClicker {
+            background-color: #00CED1; /* Turquoise */
+        }
+
+        #silkClicker {
+            background-color: #737a3a; /* Silk Yellow */
+        }
+
+        #impClicker {
+            background-color: #FF6347; /* Imp Orange */
+        }
+
+        #totalClickers {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff; /* White */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+            display: inline-block; /* Make it inline block so it doesn't take full width */
+        }
+
+        #totalClickers p {
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        #cumulativeScore {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #titleBox {
+            background-color: #63e0ff; /* White */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+            display: inline-block; /* Make it inline block so it doesn't take full width */
+            padding: 20px;
+        }
+
+        #title {
+            font-size: 48px; /* Larger title */
+            font-weight: bold;
+            color: #333; /* Dark Gray */
+            margin-bottom: 20px;
+            display: inline-block; /* Ensure the box only wraps around the title */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="titleBox">
+        <div id="title">
+            Lincoln Clicker!
+        </div>
+    </div>
+
+    <button id="clicker" class="button" onclick="incrementScore()">
+        Click me!
+    </button>
+
+    <div id="score">
+        Score: <span id="scoreValue">0</span>
+    </div>
+
+    <div id="autoClickers">
+        <div id="woodClicker" class="clickerButton" onclick="buyAutoClicker('wood', 10, 1)">
+            Buy Wood Clicker (Cost: 10)
+        </div>
+        <div id="stoneClicker" class="clickerButton" onclick="buyAutoClicker('stone', 25, 5)">
+            Buy Stone Clicker (Cost: 25)
+        </div>
+        <div id="bronzeClicker" class="clickerButton" onclick="buyAutoClicker('bronze', 100, 10)">
+            Buy Bronze Clicker (Cost: 100)
+        </div>
+        <div id="goldClicker" class="clickerButton" onclick="buyAutoClicker('gold', 1000, 100)">
+            Buy Gold Clicker (Cost: 1000)
+        </div>
+        <div id="sapphireClicker" class="clickerButton" onclick="buyAutoClicker('sapphire', 5000, 500)">
+            Buy Sapphire Clicker (Cost: 5000)
+        </div>
+
+        <!-- New Clickers -->
+        <div id="rubyClicker" class="clickerButton" onclick="buyAutoClicker('ruby', 25000, 2500)">
+            Buy Ruby Clicker (Cost: 25000)
+        </div>
+        <div id="emeraldClicker" class="clickerButton" onclick="buyAutoClicker('emerald', 250000, 25000)">
+            Buy Emerald Clicker (Cost: 250000)
+        </div>
+        <div id="topazClicker" class="clickerButton" onclick="buyAutoClicker('topaz', 1000000, 100000)">
+            Buy Topaz Clicker (Cost: 1000000)
+        </div>
+        <div id="lincolnClicker" class="clickerButton" onclick="buyAutoClicker('lincoln', 9999999, 999999)">
+            Buy Lincoln Clicker (Cost: 9999999)
+        </div>
+        <div id="crystalClicker" class="clickerButton" onclick="buyAutoClicker('crystal', 987654321, 98765432)">
+            Buy Crystal Clicker (Cost: 987654321)
+        </div>
+        <div id="amethystClicker" class="clickerButton" onclick="buyAutoClicker('amethyst', 123123123123, 12312312312)">
+            Buy Amethyst Clicker (Cost: 123123123123)
+        </div>
+        <div id="turlStreetClicker" class="clickerButton" onclick="buyAutoClicker('turlStreet', 1000000000000, 100000000000)">
+            Buy Turl Street Clicker (Cost: 1000000000000)
+        </div>
+        <div id="silkClicker" class="clickerButton" onclick="buyAutoClicker('silk', 12345678987654321, 1234567898765432)">
+            Buy Silk Clicker (Cost: 12345678987654321)
+        </div>
+        <div id="impClicker" class="clickerButton" onclick="buyAutoClicker('imp', 100000000000000000000, 100000000000000000000000)">
+            Buy Imp Clicker (Cost: 100000000000000000000)
+        </div>
+    </div>
+
+    <div id="totalClickers">
+        <p>Total Clickers:</p>
+        <p>Wood Clickers: <span id="woodCount">0</span></p>
+        <p>Stone Clickers: <span id="stoneCount">0</span></p>
+        <p>Bronze Clickers: <span id="bronzeCount">0</span></p>
+        <p>Gold Clickers: <span id="goldCount">0</span></p>
+        <p>Sapphire Clickers: <span id="sapphireCount">0</span></p>
+        <p>Ruby Clickers: <span id="rubyCount">0</span></p>
+        <p>Emerald Clickers: <span id="emeraldCount">0</span></p>
+        <p>Topaz Clickers: <span id="topazCount">0</span></p>
+        <p>Lincoln Clickers: <span id="lincolnCount">0</span></p>
+        <p>Crystal Clickers: <span id="crystalCount">0</span></p>
+        <p>Amethyst Clickers: <span id="amethystCount">0</span></p>
+        <p>Turl Street Clickers: <span id="turlStreetCount">0</span></p>
+        <p>Silk Clickers: <span id="silkCount">0</span></p>
+        <p>Imp Clickers: <span id="impCount">0</span></p>
+    </div>
+
+    <div id="cumulativeScore">
+        Cumulative Score: <span id="cumulativeScoreValue">0</span>
+    </div>
+
+<div id="leaderboard">
+        <h2>Leaderboard</h2>
+        <ol id="leaderList"></ol>
+    </div>
+
+    <button class="button" onclick="showAddToLeaderboardPrompt()">Add to Leaderboard</button>
+
+    <script>
+        let score = 0;
+        let cumulativeScore = 0;
+        let autoClickers = {
+            wood: { count: 0, speed: 0 },
+            stone: { count: 0, speed: 0 },
+            bronze: { count: 0, speed: 0 },
+            gold: { count: 0, speed: 0 },
+            sapphire: { count: 0, speed: 0 },
+            ruby: { count: 0, speed: 0 },
+            emerald: { count: 0, speed: 0 },
+            topaz: { count: 0, speed: 0 },
+            lincoln: { count: 0, speed: 0 },
+            crystal: { count: 0, speed: 0 },
+            amethyst: { count: 0, speed: 0 },
+            turlStreet: { count: 0, speed: 0 },
+            silk: { count: 0, speed: 0 },
+            imp: { count: 0, speed: 0 },
+        };
+
+        function incrementScore() {
+            score++;
+            cumulativeScore++;
+            updateScore();
+            updateCumulativeScore();
+        }
+
+        function updateScore() {
+            document.getElementById('scoreValue').innerText = score;
+        }
+
+        function updateCumulativeScore() {
+            document.getElementById('cumulativeScoreValue').innerText = cumulativeScore;
+        }
+
+        function buyAutoClicker(type, cost, speed) {
+            if (score >= cost) {
+                score -= cost;
+                autoClickers[type].count++;
+                autoClickers[type].speed += speed;
+                updateScore();
+                updateCumulativeScore();
+                updateTotalClickers();
+                setInterval(() => {
+                    score += autoClickers[type].speed;
+                    cumulativeScore += autoClickers[type].speed;
+                    updateScore();
+                    updateCumulativeScore();
+                }, 1000);
+            } else {
+                alert('Not enough score to buy ' + type + ' Clicker!');
+            }
+        }
+
+        function updateTotalClickers() {
+            document.getElementById('woodCount').innerText = autoClickers.wood.count;
+            document.getElementById('stoneCount').innerText = autoClickers.stone.count;
+            document.getElementById('bronzeCount').innerText = autoClickers.bronze.count;
+            document.getElementById('goldCount').innerText = autoClickers.gold.count;
+            document.getElementById('sapphireCount').innerText = autoClickers.sapphire.count;
+            document.getElementById('rubyCount').innerText = autoClickers.ruby.count;
+            document.getElementById('emeraldCount').innerText = autoClickers.emerald.count;
+            document.getElementById('topazCount').innerText = autoClickers.topaz.count;
+            document.getElementById('lincolnCount').innerText = autoClickers.lincoln.count;
+            document.getElementById('crystalCount').innerText = autoClickers.crystal.count;
+            document.getElementById('amethystCount').innerText = autoClickers.amethyst.count;
+            document.getElementById('turlStreetCount').innerText = autoClickers.turlStreet.count;
+            document.getElementById('silkCount').innerText = autoClickers.silk.count;
+            document.getElementById('impCount').innerText = autoClickers.imp.count;
+        }
+
+
+        let leaderboard = [];
+
+        function updateLeaderboard() {
+            // Sort the leaderboard in descending order of cumulativeScore
+            leaderboard.sort((a, b) => b.cumulativeScore - a.cumulativeScore);
+
+            // Update the leaderboard HTML
+            const leaderList = document.getElementById('leaderList');
+            leaderList.innerHTML = '';
+
+            leaderboard.forEach((entry, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${index + 1}. ${entry.playerName} - ${entry.cumulativeScore}`;
+                leaderList.appendChild(listItem);
+            });
+        }
+
+        function addToLeaderboard(playerName) {
+            const playerEntry = {
+                playerName,
+                cumulativeScore,
+            };
+
+            leaderboard.push(playerEntry);
+            updateLeaderboard();
+        }
+
+        function showAddToLeaderboardPrompt() {
+            const playerName = prompt('Enter your name:');
+            if (playerName) {
+                addToLeaderboard(playerName);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
