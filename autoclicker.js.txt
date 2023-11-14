@@ -1,0 +1,50 @@
+// autoclicker.js
+
+// Autoclicker related functionality goes here
+
+let autoclickerLevels = {
+    brasenose: { cost: 10, rate: 1 },
+    fresher: { cost: 20, rate: 2 },
+    JCR: { cost: 30, rate: 3 },
+    'turl street': { cost: 40, rate: 4 },
+    MCR: { cost: 50, rate: 5 },
+    christchurch: { cost: 60, rate: 6 },
+    blues: { cost: 70, rate: 7 },
+    chapel: { cost: 80, rate: 8 },
+    oriel: { cost: 90, rate: 9 },
+    varsity: { cost: 100, rate: 10 },
+    lincoln: { cost: 200, rate: 20 },
+    imp: { cost: 300, rate: 30 }
+};
+
+// Initialize variables
+let score = 0;
+let autoclickers = {};
+
+// Function to buy autoclickers
+export function buyAutoclicker(level) {
+    if (score >= autoclickerLevels[level].cost) {
+        score -= autoclickerLevels[level].cost;
+        autoclickers[level] = autoclickerLevels[level].rate;
+        updateScore(score);
+        // Additional logic for handling the purchased autoclicker goes here
+    } else {
+        alert("Not enough score to buy this autoclicker!");
+    }
+}
+
+// Function to update the score on the page
+export function updateScore(newScore) {
+    document.getElementById('scoreCount').textContent = newScore;
+}
+
+// Function to simulate autoclicking based on the autoclickers owned
+export function simulateAutoclicking() {
+    let autoclickerScore = 0;
+    for (let level in autoclickers) {
+        autoclickerScore += autoclickers[level];
+    }
+    score += autoclickerScore;
+    updateScore(score);
+    // Additional logic for autoclicking goes here
+}
